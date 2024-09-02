@@ -14,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
+
     @Autowired
     private PacienteService pacienteService;
 
@@ -28,13 +29,17 @@ public class PacienteController {
       return ResponseEntity.noContent().build();
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("buscar/id/{id}")
   public ResponseEntity<Optional<Paciente>> buscarPacienteID(@PathVariable Long id) {
       return ResponseEntity.ok(pacienteService.buscarPorID(id));
   }
 
+  @GetMapping("buscar/nombre/{nombre}")
+  public ResponseEntity<Optional<Paciente>> buscarPacienteNombre(@PathVariable String nombre) {
+      return ResponseEntity.ok(pacienteService.buscarPacientePorNombre(nombre));
+  }
 
-  @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
   public ResponseEntity<Void> eliminarPacienteID(@PathVariable Long id) {
         pacienteService.eliminarPacienteID(id);
         return ResponseEntity.noContent().build();

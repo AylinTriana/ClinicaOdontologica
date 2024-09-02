@@ -20,7 +20,9 @@ import java.util.Optional;
 public class TurnoController {
     @Autowired
     private TurnoService turnoService;
+    @Autowired
     private PacienteService pacienteService;
+    @Autowired
     private OdontologoService odontologoService;
 
     @PostMapping

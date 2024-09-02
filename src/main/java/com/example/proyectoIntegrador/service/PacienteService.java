@@ -1,7 +1,6 @@
 package com.example.proyectoIntegrador.service;
 
 
-import com.example.proyectoIntegrador.entity.Odontologo;
 import com.example.proyectoIntegrador.entity.Paciente;
 import com.example.proyectoIntegrador.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class PacienteService {
         return pacienteRepository.findById(id);
     }
 
-    public Optional<Odontologo> buscarPorCorreo(String nombre) {
+    public Optional<Paciente> buscarPacientePorNombre(String nombre) {
         return pacienteRepository.buscarPacientePorNombre(nombre);
     }
 
