@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
-    @Query("SELECT pa FROM Paciente pa where pa.nombre=?1")
+    @Query("SELECT pa FROM Paciente pa WHERE UPPER (pa.nombre) = UPPER (?1)")
     Optional<Paciente> buscarPacientePorNombre(String nombre);
 }
