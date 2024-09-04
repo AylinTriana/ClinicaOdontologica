@@ -34,6 +34,11 @@ body, html {
             color: #C47E7E !important;
         }
 
+        .dropdown-item:hover {
+            background-color: #e0a1a2;
+            color: white;
+        }
+
         .btn-custom {
             background-color: #C47E7E;
             color: white;
@@ -42,7 +47,7 @@ body, html {
         }
 
         .btn-custom:hover {
-            background-color: #E8C1C3;
+            background-color: #f8d7da;
         }
 
         .hero-text {
@@ -54,11 +59,23 @@ body, html {
             background-color: rgba(255, 255, 255, 0.1);
             width: 100%;
             max-width: 1200px;
-            margin: 15px auto;
-            padding: 0px 20px;
+            margin: 10px auto;
+            padding: 10px 30px;
             box-shadow: 0 0 10px rgba(196, 126, 126, 1);
             border-radius: 10px;
-            position: relative
+            position: relative;
+            top: 10px;
+        }
+
+        .cont {
+        background-color: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 700px;
+            margin: 10px auto;
+            padding: 20px 30px;
+            box-shadow: 0 0 10px rgba(196, 126, 126, 1);
+            border-radius: 10px;
+            position: relative;
             top: 10px;
         }
 
@@ -74,11 +91,11 @@ body, html {
         }
 
         .auth-container button:hover {
-            background-color: #4a148c;
+            background-color: #f8d7da;
         }
 
         .auth-switch {
-            margin-top: 20px;
+            margin: 20px;
         }
 
         .form-row {
@@ -95,9 +112,10 @@ body, html {
             margin-right: 0;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="email"], input[type="confirm password"]{
             width: 100%;
             padding: 8px;
+            margin: 10px 0px;
             border-radius: 4px;
             border: none;
             background-color: rgba(255, 255, 255, 0.7);
