@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface OdontologRepository extends JpaRepository<Odontologo, Long> {
 
-    @Query("SELECT odt FROM Odontologo odt where odt.nombre=?1")
+    @Query("SELECT odt FROM Odontologo odt WHERE UPPER (odt.nombre) = UPPER (?1)")
     Optional<Odontologo> buscarOdontologoPorNombre(String nombre);
 
 
