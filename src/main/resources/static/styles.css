@@ -1,0 +1,112 @@
+body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image:  url('img/fondo.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .overlay {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .navbar-brand {
+            color: white;
+            margin: 0px 20px;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .navbar-brand:hover {
+        color: #C47E7E !important;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: #C47E7E !important;
+        }
+
+        .btn-custom {
+            background-color: #C47E7E;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .btn-custom:hover {
+            background-color: #E8C1C3;
+        }
+
+        .hero-text {
+            margin-top: 20%;
+            text-align: center;
+        }
+
+        .auth-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 1200px;
+            margin: 15px auto;
+            padding: 0px 20px;
+            box-shadow: 0 0 10px rgba(196, 126, 126, 1);
+            border-radius: 10px;
+            position: relative
+            top: 10px;
+        }
+
+        .auth-container button {
+            background-color: F8D7DA;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .auth-container button:hover {
+            background-color: #4a148c;
+        }
+
+        .auth-switch {
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .form-row .form-group:last-child {
+            margin-right: 0;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px rgba(196, 126, 126, 1)
+        }
+
+        h2 {
+        color: #C47E7E;
+        margin: 5px 0px;
+        font-weight: bold;
+        text-align: center;
+        }
