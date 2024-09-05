@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
             //de llamar a la API para eliminar una pelicula
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + odontologo.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn_delete">' +
+                                      ' type="button" onclick="deleteByID('+odontologo.id+')" class="btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
