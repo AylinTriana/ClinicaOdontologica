@@ -123,9 +123,33 @@ body, html {
             box-shadow: 0 0 10px rgba(196, 126, 126, 1)
         }
 
-        h2 {
-        color: #C47E7E;
-        margin: 5px 0px;
-        font-weight: bold;
-        text-align: center;
+        .titulo {
+            color: #C47E7E;
+            margin: 5px 0px;
+            font-weight: bold;
+            text-align: center;
         }
+
+        .tit {
+             color: #C47E7E;
+             margin: 5px 0px;
+             font-weight: bold;
+             text-align: left;
+        }
+
+         .custom-table-container {
+              background-color: rgba(255, 255, 255, 0.1);
+              box-shadow: 0 0 10px rgba(196, 126, 126, 1);
+              padding: 15px;
+              border-radius: 5px;
+         }
+
+
+         .custom-table {
+             background-color: transparent !important;
+             color: white !important;
+         }
+
+         .custom-table th, .custom-table td {
+            color: white !important;
+         }
