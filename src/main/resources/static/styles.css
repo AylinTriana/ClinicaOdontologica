@@ -80,6 +80,18 @@ body, html {
             top: 10px;
         }
 
+        .conti {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 700px;
+            margin: 10px;
+            padding: 20px 30px;
+            box-shadow: 0 0 10px rgba(196, 126, 126, 1);
+            border-radius: 10px;
+            position: relative;
+            top: 10px;
+        }
+
         .auth-container button {
             background-color: F8D7DA;
             color: white;
@@ -148,8 +160,29 @@ body, html {
          .custom-table {
              background-color: transparent !important;
              color: white !important;
+             table-layout: fixed;
+             width: 100%;
          }
 
          .custom-table th, .custom-table td {
             color: white !important;
+            word-wrap: break-word;
+            white-space: normal;
+            text-align: center;
+         }
+
+         .custom-table th.na, .custom-table td.na {
+             width: 200px;
+         }
+
+         .custom-table th.ac, .custom-table td.ac {
+             width: 80px;
+         }
+
+         .custom-table th.dir, .custom-table td.dir{
+             width: 180px;
+         }
+
+         .custom-table th.email, .custom-table td.email {
+             width: 250px;
          }
