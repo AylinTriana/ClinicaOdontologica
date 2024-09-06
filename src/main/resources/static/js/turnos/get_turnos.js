@@ -30,9 +30,10 @@ window.addEventListener('load', function () {
                                       '</button>';
 
             turnoRow.innerHTML = '<td>' + updateButton + '</td>' +
-                    '<td class=\"td_nombrePaciente\">' + turno.id.toUpperCase() + '</td>' +
-                    '<td class=\"td_apellidoPaciente\">' + turno.paciente.toUpperCase() + '</td>' +
-                    '<td class=\"td_nombreOdontologo\">' + turno.odontologo.toUpperCase() + '</td>' +
+                    '<td class=\"td_nombrePaciente\">' + turno.paciente.nombre.toUpperCase() + '</td>' +
+                    '<td class=\"td_apellidoPaciente\">' + turno.paciente.apellido.toUpperCase()  + '</td>' +
+                    '<td class=\"td_nombreOdontologo\">' + turno.odontologo.nombre.toUpperCase() + '</td>' +
+                    '<td class=\"td_apellidoOdontologo\">' + turno.odontologo.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_fechaTurno\">' + turno.fecha + '</td>' +
                     '<td>' + deleteButton + '</td>';
 

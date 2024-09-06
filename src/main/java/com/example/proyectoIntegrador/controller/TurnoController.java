@@ -4,6 +4,7 @@ package com.example.proyectoIntegrador.controller;
 import com.example.proyectoIntegrador.entity.Odontologo;
 import com.example.proyectoIntegrador.entity.Paciente;
 import com.example.proyectoIntegrador.entity.Turno;
+import com.example.proyectoIntegrador.exception.BadRequestException;
 import com.example.proyectoIntegrador.service.OdontologoService;
 import com.example.proyectoIntegrador.service.PacienteService;
 import com.example.proyectoIntegrador.service.TurnoService;
@@ -26,7 +27,7 @@ public class TurnoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) {
+    public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(turno.getOdontologo().getId());
         if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
@@ -34,7 +35,7 @@ public class TurnoController {
             turno.setOdontologo(odontologoBuscado.get());
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
         } else {
-            return ResponseEntity.badRequest().build();
+            throw new BadRequestException("Datos incorrectos: Verifique numero de paciente y el numero de odontologo");
         }
     }
 

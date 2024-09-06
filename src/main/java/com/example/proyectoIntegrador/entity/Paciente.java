@@ -36,5 +36,11 @@ public class Paciente {
     @JsonIgnore
     private List<Turno> turnos = new ArrayList<>();
 
+    public Paciente(String id) {
+        this.id = Long.parseLong(id);
+    }
+
 }
+
+
 
