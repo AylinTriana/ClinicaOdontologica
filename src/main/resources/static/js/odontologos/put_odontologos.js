@@ -1,8 +1,6 @@
 window.addEventListener('load', function () {
 
-    //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
-    //los datos que el usuario cargará de la nueva pelicula
-    const formulario = document.querySelector('#add_new_odontologo');
+    const formulario = document.querySelector('#put_odontologo_form');
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
@@ -18,7 +16,7 @@ window.addEventListener('load', function () {
         //la película que enviaremos en formato JSON
         const url = '/odontologos';
         const settings = {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -32,7 +30,7 @@ window.addEventListener('load', function () {
                  //se agrego bien
                  let successAlert = '<div class="alert alert-success alert-dismissible">' +
                      '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                     '<strong></strong> Odontologo agregado </div>'
+                     '<strong></strong> Odontologo actualizado </div>'
 
                  document.querySelector('#response').innerHTML = successAlert;
                  document.querySelector('#response').style.display = "block";
@@ -53,18 +51,11 @@ window.addEventListener('load', function () {
     });
 
 
-    function resetUploadForm(){
-        document.querySelector('#nombre').value = "";
-        document.querySelector('#apellido').value = "";
-         document.querySelector('#matricula').value = "";
-
-    }
-
-    (function(){
+      (function(){
         let pathname = window.location.pathname;
         if(pathname === "/"){
             document.querySelector(".nav .nav-item a:first").addClass("active");
-        } else if (pathname == "./post_odontologos.html") {
+        } else if (pathname == "./put_odontologos.html") {
             document.querySelector(".nav .nav-item a:last").addClass("active");
         }
     })();
