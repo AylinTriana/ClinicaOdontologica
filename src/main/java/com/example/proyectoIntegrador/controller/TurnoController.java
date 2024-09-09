@@ -45,17 +45,20 @@ public class TurnoController {
     }
 
     @PutMapping
-    public void actualizarTurno(Turno turno) {
+    public ResponseEntity<Void> actualizarTurno(@RequestBody Turno turno) {
         turnoService.guardarTurno(turno);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarTurno(Long id) {
+    public ResponseEntity<Void> eliminarTurno(@PathVariable Long id) {
         turnoService.eliminarTurno(id);
+        return ResponseEntity.noContent().build();
     }
 
+
     @GetMapping("/buscar/{id}")
-    public Optional<Turno> buscarPorId(Long id) {
+    public Optional<Turno> buscarPorId(@PathVariable Long id ) {
         return turnoService.buscarPorId(id);
     }
 }

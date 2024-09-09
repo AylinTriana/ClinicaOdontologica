@@ -8,7 +8,7 @@ window.addEventListener('load', function () {
 
         const formData = {
                   paciente:{
-                     id: parseInt(document.querySelector('#paciente').value),
+                     id: (document.querySelector('#paciente').value),
                   },
                   odontologo:{
                      id: (document.querySelector('#odontologo').value),

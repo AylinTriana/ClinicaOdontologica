@@ -54,3 +54,9 @@ window.addEventListener('load', function () {
 
 
     })
+
+    function findBy(id) {
+                               localStorage.setItem('id', id);
+                               window.location.href = 'put_turnos.html';
+
+      };
