@@ -156,7 +156,6 @@ body, html {
               border-radius: 5px;
          }
 
-
          .custom-table {
              background-color: transparent !important;
              color: white !important;
@@ -172,7 +171,7 @@ body, html {
          }
 
          .custom-table th.na, .custom-table td.na {
-             width: 200px;
+             width: 170px;
          }
 
          .custom-table th.ac, .custom-table td.ac {
@@ -180,9 +179,9 @@ body, html {
          }
 
          .custom-table th.dir, .custom-table td.dir{
-             width: 180px;
+             width: 100px;
          }
 
          .custom-table th.email, .custom-table td.email {
-             width: 250px;
+             width: 240px;
          }

@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
       fetch(url,settings)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+
          for(paciente of data){
 
             var table = document.getElementById("pacienteTable");
@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
 
     (function(){
       let pathname = window.location.pathname;
-      if (pathname == "./get_pacientes.html") {
+      if (pathname == "/get_pacientes.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })
