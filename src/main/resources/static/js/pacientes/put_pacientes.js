@@ -1,70 +1,104 @@
-function findBy(id) {
-    const url = '/pacientes';
-    const settings = {
-        method: 'GET'
-    };
+window.addEventListener('load', function () {
 
-    fetch(url, settings)
-        .then(response => response.json())
-        .then(data => {
-            // Cargar los datos en el formulario
-            document.querySelector('#paciente_id').value = data.id;
-            document.querySelector('#nombre').value = data.nombre;
-            document.querySelector('#apellido').value = data.apellido;
-            document.querySelector('#cedula').value = data.cedula;
-            document.querySelector('#fechaIngreso').value = data.fechaIngreso;
-            document.querySelector('#calle').value = data.domicilio.calle;
-            document.querySelector('#numero').value = data.domicilio.numero;
-            document.querySelector('#localidad').value = data.domicilio.localidad;
-            document.querySelector('#provincia').value = data.domicilio.provincia;
-            document.querySelector('#email').value = data.email;
+    (function() {
+        const id = localStorage.getItem('id');
+        const url = '/pacientes/buscar/id/${id}';
+        const settings = {
+            method: 'GET'
+        };
 
-            // Mostrar el formulario de actualización
-            document.querySelector('#div_paciente_updating').style.display = "block";
-        })
-        .catch(error => console.log('Error al buscar paciente: ', error));
-}
+        fetch(url, settings)
+            .then(response => response.json())
+            .then(paciente => {
 
-document.querySelector('#put_paciente_form').addEventListener('submit', function(event) {
-    event.preventDefault();
+                if (paciente && paciente.id) {
+                    document.querySelector('#id').value = paciente.id;
+                    document.querySelector('#nombre').value = paciente.nombre;
+                    document.querySelector('#apellido').value = paciente.apellido;
+                    document.querySelector('#cedula').value = paciente.cedula;
+                    document.querySelector('#fechaIngreso').value = paciente.fechaIngreso;
+                    document.querySelector('#calle').value = paciente.domicilio.calle;
+                    document.querySelector('#numero').value = paciente.domicilio.numero;
+                    document.querySelector('#localidad').value = paciente.domicilio.localidad;
+                    document.querySelector('#provincia').value = paciente.domicilio.provincia;
+                    document.querySelector('#email').value = paciente.email;
+                } else {
+                    console.error('No se recibió un paciente válido.');
+                }
+            })
+            .catch(error => console.error('Error al obtener los datos:', error));
+    })();
 
-    const pacienteId = document.querySelector('#paciente_id').value;
-    const paciente = {
-        id: pacienteId,
-        nombre: document.querySelector('#nombre').value,
-        apellido: document.querySelector('#apellido').value,
-        cedula: document.querySelector('#cedula').value,
-        fechaIngreso: document.querySelector('#fechaIngreso').value,
-        domicilio: {
-            calle: document.querySelector('#calle').value,
-            numero: document.querySelector('#numero').value,
-            localidad: document.querySelector('#localidad').value,
-            provincia: document.querySelector('#provincia').value
+    // Asegúrate de que el formulario se seleccione correctamente
+    const formulario = document.querySelector('#put_paciente_form');
+
+    if (formulario) {
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+
+            const formData = {
+                id: document.querySelector('#id').value,
+                nombre: document.querySelector('#nombre').value,
+                apellido: document.querySelector('#apellido').value,
+                matricula: document.querySelector('#matricula').value,
+                cedula: document.querySelector('#cedula').value,
+                fechaIngreso: document.querySelector('#fechaIngreso').value,
+                domicilio: {
+                   calle: document.querySelector('#calle').value,
+                   numero: document.querySelector('#numero').value,
+                   localidad: document.querySelector('#localidad').value,
+                   provincia: document.querySelector('#provincia').value,
+                }
+                email: document.querySelector('#email').value,
+            };
+
+            const url = '/pacientes';
+            const settings = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            };
+
+            fetch(url, settings)
+                .then(response => response.json())
+                .then(data => {
+                    let successAlert = '<div class="alert alert-success alert-dismissible">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong></strong> Paciente actualizado </div>';
+
+                    document.querySelector('.response').innerHTML = successAlert;
+                    document.querySelector('.response').style.display = "block";
+                    resetUploadForm();
+                })
+                .catch(error => {
+                    let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<strong> Error, intente nuevamente</strong> </div>';
+
+                    document.querySelector('.response').innerHTML = errorAlert;
+                    document.querySelector('.response').style.display = "block";
+                    resetUploadForm();
+                });
+        });
+    } else {
+        console.error('El formulario con ID "put_paciente_form" no se encontró.');
+    }
+
+    (function(){
+        let pathname = window.location.pathname;
+        if (pathname === "/" || pathname === "/put_pacientes.html") {
+            document.querySelector(".nav .nav-item a:last-child").classList.add("active");
         }
-        email: document.querySelector('#email').value,
-    };
-
-    const url = '/pacientes';
-    const settings = {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(paciente)
-    };
-
-    fetch(url, settings)
-        .then(response => response.json())
-        .then(data => {
-            // Mostrar éxito y recargar la lista de pacientes
-            let successAlert =
-                '<div class="alert alert-success alert-dismissible">' +
-                '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong></strong> Paciente actualizado correctamente </div>';
-            document.querySelector('#response').innerHTML = successAlert;
-            document.querySelector('#response').style.display = "block";
-
-            setTimeout(() => { location.reload(); }, 1000);
-        })
-        .catch(error => console.log('Error al actualizar el paciente: ', error));
+    })();
 });
+
+
+
+
+
+
+
+
+

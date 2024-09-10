@@ -3,17 +3,6 @@ window.addEventListener('load', function () {
 
     const formulario = document.querySelector('#delete_paciente');
 
-
-    formulario.addEventListener('onclick', function (event) {
-        event.preventDefault();
-
-
-        const pacienteId = document.querySelector('#paciente_id').value;
-
-
-        deleteByID(pacienteId);
-    });
-
     (function () {
         let pathname = window.location.pathname;
         if (pathname === "/eliminar/") {
@@ -54,9 +43,4 @@ function deleteBy(id) {
         .catch(error => {
             alert('Error: ' + error.message);
         });
-}
-
-function resetUploadForm() {
-    document.querySelector('#paciente_id').value = "";
-
 }

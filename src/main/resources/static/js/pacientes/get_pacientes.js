@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
 
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_' + paciente.id + '\"' +
-                                      ' type="button" onclick="deleteBy('+paciente.id+')" class="btn btn-danger btn_delete">' +
+                                      ' type="button" onclick="deleteBy('+paciente.id+')" class="delete_paciente btn btn-danger btn_delete">' +
                                       '&times' +
                                       '</button>';
 
@@ -58,3 +58,9 @@ window.addEventListener('load', function () {
 
 
     })
+
+    function findBy(id) {
+                               localStorage.setItem('id', id);
+                               window.location.href = 'put_pacientes.html';
+
+      };
