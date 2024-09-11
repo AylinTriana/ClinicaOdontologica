@@ -26,7 +26,7 @@ window.addEventListener('load', function () {
 
             let updateButton = '<button' +
                                       ' id=' + '\"' + 'btn_id_' + odontologo.id + '\"' +
-                                      ' type="button" onclick="findBy('+odontologo.id+')" class="btn btn-info btn_id">' +
+                                      ' type="button" onclick="getBy('+odontologo.id+')" class="btn btn-info btn_id">' +
                                       odontologo.id +
                                       '</button>';
 
@@ -59,7 +59,7 @@ window.addEventListener('load', function () {
 
 
 
-  function findBy(id) {
+  function getBy(id) {
                            localStorage.setItem('id', id);
                            window.location.href = 'put_odontologos.html';
 

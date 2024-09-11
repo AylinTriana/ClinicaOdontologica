@@ -11,6 +11,7 @@ window.addEventListener('load', function () {
             .then(response => response.json())
             .then(turno => {
 
+
                 if (turno && turno.id) {
                     document.querySelector('#turno_id').value = turno.id;
                     document.querySelector('#idPaciente').value = turno.paciente.id;
@@ -65,14 +66,7 @@ window.addEventListener('load', function () {
                     document.querySelector('#response').style.display = "block";
 
                 })
-             
-             
-             
-             
 
-             
-             
-             
         });
     } else {
         console.error('El formulario con ID "put_turno_form" no se encontró.');

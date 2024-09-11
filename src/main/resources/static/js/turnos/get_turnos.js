@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
 
             let updateButton = '<button' +
                                       ' id=' + '\"' + 'btn_id_' + turno.id + '\"' +
-                                      ' type="button" onclick="findBy('+turno.id+')" class="btn btn-info btn_id">' +
+                                      ' type="button" onclick="getBy('+turno.id+')" class="btn btn-info btn_id">' +
                                       turno.id +
                                       '</button>';
 
@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
 
     })
 
-    function findBy(id) {
+    function getBy(id) {
                                localStorage.setItem('id', id);
                                window.location.href = 'put_turnos.html';
 

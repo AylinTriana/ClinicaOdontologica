@@ -9,6 +9,7 @@ import com.example.proyectoIntegrador.service.OdontologoService;
 import com.example.proyectoIntegrador.service.PacienteService;
 import com.example.proyectoIntegrador.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +46,17 @@ public class TurnoController {
     }
 
     @PutMapping
-    public ResponseEntity<Void> actualizarTurno(@RequestBody Turno turno) {
-        turnoService.guardarTurno(turno);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> actualizarTurno(@RequestBody Turno turno) throws BadRequestException {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(turno.getPaciente().getId());
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(turno.getOdontologo().getId());
+        if (pacienteBuscado.isPresent() && odontologoBuscado.isPresent()) {
+            turno.setPaciente(pacienteBuscado.get());
+            turno.setOdontologo(odontologoBuscado.get());
+            turnoService.guardarTurno(turno);
+            return new ResponseEntity<>("Turno Agendado", HttpStatus.OK);
+        } else {
+            throw new BadRequestException("Datos incorrectos: Verifique numero de paciente y el numero de odontologo");
+        }
     }
 
     @DeleteMapping("/eliminar/{id}")

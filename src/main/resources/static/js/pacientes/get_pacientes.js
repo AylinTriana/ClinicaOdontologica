@@ -25,7 +25,7 @@ window.addEventListener('load', function () {
 
             let updateButton = '<button' +
                                       ' id=' + '\"' + 'btn_id_' + paciente.id + '\"' +
-                                      ' type="button" onclick="findBy('+paciente.id+')" class="btn btn-info btn_id">' +
+                                      ' type="button" onclick="getBy('+paciente.id+')" class="btn btn-info btn_id">' +
                                       paciente.id +
                                       '</button>';
 
@@ -59,8 +59,8 @@ window.addEventListener('load', function () {
 
     })
 
-    function findBy(id) {
+    function getBy(id) {
                                localStorage.setItem('id', id);
                                window.location.href = 'put_pacientes.html';
 
-      };
+    };

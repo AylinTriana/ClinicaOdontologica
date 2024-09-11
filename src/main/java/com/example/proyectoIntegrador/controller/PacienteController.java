@@ -5,6 +5,7 @@ import com.example.proyectoIntegrador.exception.BadRequestException;
 import com.example.proyectoIntegrador.exception.ResourceNotFoundException;
 import com.example.proyectoIntegrador.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,11 +29,12 @@ public class PacienteController {
       Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(paciente.getId());
       if (pacienteBuscado.isPresent()) {
           pacienteService.actualizarPaciente(paciente);
-          return ResponseEntity.status(200).body("paciente actualizado con exito");
+          return new ResponseEntity<>("paciente actualizado con exito", HttpStatus.OK);
       } else {
           throw new ResourceNotFoundException("Paciente no encontrado");
       }
   }
+
   @GetMapping("buscar/id/{id}")
   public ResponseEntity<Optional<Paciente>> buscarPacienteID(@PathVariable Long id) throws ResourceNotFoundException {
       Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);

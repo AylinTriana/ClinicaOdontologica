@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
 
     (function() {
         const id = localStorage.getItem('id');
-        const url = '/pacientes/buscar/id/${id}';
+        const url = `/pacientes/buscar/id/${id}`;
         const settings = {
             method: 'GET'
         };
@@ -40,7 +40,6 @@ window.addEventListener('load', function () {
                 id: document.querySelector('#id').value,
                 nombre: document.querySelector('#nombre').value,
                 apellido: document.querySelector('#apellido').value,
-                matricula: document.querySelector('#matricula').value,
                 cedula: document.querySelector('#cedula').value,
                 fechaIngreso: document.querySelector('#fechaIngreso').value,
                 domicilio: {
@@ -48,39 +47,43 @@ window.addEventListener('load', function () {
                    numero: document.querySelector('#numero').value,
                    localidad: document.querySelector('#localidad').value,
                    provincia: document.querySelector('#provincia').value,
-                }
+                },
                 email: document.querySelector('#email').value,
             };
 
-            const url = '/pacientes';
-            const settings = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            };
+         const url = '/pacientes';
+         const settings = {
+             method: 'PUT',
+             headers: {
+                 'Content-Type': 'application/json',
+             },
+             body: JSON.stringify(formData)
+         };
 
-            fetch(url, settings)
-                .then(response => response.json())
-                .then(data => {
-                    let successAlert = '<div class="alert alert-success alert-dismissible">' +
-                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                        '<strong></strong> Paciente actualizado </div>';
+         fetch(url, settings)
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error('Error al actualizar el paciente');
+                 }
+                 return response.text(); // Si el backend devuelve texto plano
+             })
+             .then(data => {
+                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
+                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                     '<strong></strong> ' + data + ' </div>'; // Muestra el mensaje devuelto
 
-                    document.querySelector('.response').innerHTML = successAlert;
-                    document.querySelector('.response').style.display = "block";
-                    resetUploadForm();
-                })
-                .catch(error => {
-                    let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
-                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                        '<strong> Error, intente nuevamente</strong> </div>';
+                 document.querySelector('#response').innerHTML = successAlert;
+                 document.querySelector('#response').style.display = "block";
+             })
+             .catch(error => {
+                 console.error('Hubo un problema con la actualización:', error);
+                 let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
+                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                     '<strong>Error: </strong>' + error.message + ' </div>';
 
-                    document.querySelector('.response').innerHTML = errorAlert;
-                    document.querySelector('.response').style.display = "block";
-                    resetUploadForm();
-                });
+                 document.querySelector('#response').innerHTML = errorAlert;
+                 document.querySelector('#response').style.display = "block";
+             });
         });
     } else {
         console.error('El formulario con ID "put_paciente_form" no se encontró.');

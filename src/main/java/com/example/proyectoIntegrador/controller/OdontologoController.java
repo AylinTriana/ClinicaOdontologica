@@ -3,6 +3,7 @@ package com.example.proyectoIntegrador.controller;
 import com.example.proyectoIntegrador.entity.Odontologo;
 import com.example.proyectoIntegrador.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,9 @@ import java.util.Optional;
         }
 
         @PutMapping
-        public ResponseEntity<Void> actualizarOdontologo(@RequestBody Odontologo odontologo) {
+        public ResponseEntity<String> actualizarOdontologo(@RequestBody Odontologo odontologo) {
             odontologoService.actualizarOdontologo(odontologo);
-            return ResponseEntity.noContent().build(); // Devuelve 204 No Content si la actualización fue exitosa
+            return new ResponseEntity<>("Odontologo actualizado", HttpStatus.OK); // Devuelve 204 No Content si la actualización fue exitosa
     }
 
         @GetMapping
