@@ -7,8 +7,6 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "turnos")
 public class Turno {
@@ -24,4 +22,23 @@ public class Turno {
     @Column
     private LocalDate fecha;
 
+    public Turno() {
+    }
+
+
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+        this.paciente = paciente;
+        this.odontologo = odontologo;
+        this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "Turno{" +
+                "id=" + id +
+                ", paciente=" + paciente +
+                ", odontologo=" + odontologo +
+                ", fecha=" + fecha +
+                '}';
+    }
 }

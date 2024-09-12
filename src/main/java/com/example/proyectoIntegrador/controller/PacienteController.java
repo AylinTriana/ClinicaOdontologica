@@ -16,8 +16,8 @@ import java.util.Optional;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
-    @Autowired
-    private PacienteService pacienteService;
+   @Autowired
+   private PacienteService pacienteService;
 
   @PostMapping
   public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente){
@@ -29,7 +29,7 @@ public class PacienteController {
       Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(paciente.getId());
       if (pacienteBuscado.isPresent()) {
           pacienteService.actualizarPaciente(paciente);
-          return new ResponseEntity<>("paciente actualizado con exito", HttpStatus.OK);
+          return ResponseEntity.status(200).body("paciente actualizado con exito");
       } else {
           throw new ResourceNotFoundException("Paciente no encontrado");
       }
@@ -54,7 +54,7 @@ public class PacienteController {
       }
   }
     @DeleteMapping("/eliminar/{id}")
-  public ResponseEntity<String> eliminarPacienteID(@PathVariable Long id) throws BadRequestException {
+  public ResponseEntity<String> eliminarPacienteID(@PathVariable("id") Long id) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
         if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPacienteID(id);

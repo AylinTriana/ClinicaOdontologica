@@ -2,9 +2,7 @@ package com.example.proyectoIntegrador.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -12,8 +10,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table (name = "odontologos")
 public class Odontologo {
@@ -31,7 +27,19 @@ public class Odontologo {
     private List<Turno> turnos = new ArrayList<>();
 
 
-    public Odontologo(String id) {
-        this.id = Long.parseLong(id);
+    public Odontologo() {
+    }
+
+    public Odontologo(Long id, String nombre, String apellido, String matricula) {
+        this.id = Long.parseLong(String.valueOf(id));
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
+
+    public Odontologo(String nombre, String apellido, String matricula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
     }
 }

@@ -149,6 +149,19 @@ body, html {
              text-align: left;
         }
 
+        .til {
+              color: white;
+              text-decoration: none;
+              position: relative;
+              padding: 8px 16px;
+              top: 9px;
+              font-size: 17px;
+        }
+
+        .til:hover {
+              color: #C47E7E;
+        }
+
          .custom-table-container {
               background-color: rgba(255, 255, 255, 0.1);
               box-shadow: 0 0 10px rgba(196, 126, 126, 1);

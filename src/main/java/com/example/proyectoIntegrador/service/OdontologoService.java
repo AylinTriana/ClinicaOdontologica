@@ -2,7 +2,7 @@ package com.example.proyectoIntegrador.service;
 
 
 import com.example.proyectoIntegrador.entity.Odontologo;
-import com.example.proyectoIntegrador.repository.OdontologRepository;
+import com.example.proyectoIntegrador.repository.OdontologoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class OdontologoService {
 
     @Autowired
-    private OdontologRepository odontologRepository;
+    private OdontologoRepository odontologRepository;
 
     public Odontologo guardarOdontologo(Odontologo odontologo) {
         return odontologRepository.save(odontologo);
