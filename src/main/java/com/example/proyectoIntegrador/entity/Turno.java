@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 @Table(name = "turnos")
 public class Turno {
     @Id
