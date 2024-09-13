@@ -199,3 +199,11 @@ body, html {
              width: 240px;
          }
 
+         .title {
+             font-size: 4em;
+             color: #FFC0CB;
+             margin: 5px 0px;
+             font-weight: bold;
+             text-align: center;
+         }
+

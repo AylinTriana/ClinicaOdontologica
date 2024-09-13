@@ -13,30 +13,30 @@ import java.util.Optional;
 public class OdontologoService {
 
     @Autowired
-    private OdontologoRepository odontologRepository;
+    private OdontologoRepository odontologoRepository;
 
     public Odontologo guardarOdontologo(Odontologo odontologo) {
-        return odontologRepository.save(odontologo);
+        return odontologoRepository.save(odontologo);
     }
 
     public List<Odontologo> listarOdontologos() {
-        return odontologRepository.findAll();
+        return odontologoRepository.findAll();
     }
 
     public Optional<Odontologo> buscarPorID(Long id) {
-        return odontologRepository.findById(id);
+        return odontologoRepository.findById(id);
     }
 
     public void actualizarOdontologo(Odontologo odontologo) {
-        odontologRepository.save(odontologo);
+        odontologoRepository.save(odontologo);
     }
 
     public void eliminarPorID(Long id) {
-        odontologRepository.deleteById(id);
+        odontologoRepository.deleteById(id);
     }
 
     public Optional<Odontologo> buscarPorNombre(String nombre){
-        return odontologRepository.buscarOdontologoPorNombre(nombre);
+        return odontologoRepository.buscarOdontologoPorNombre(nombre);
     }
 
 }

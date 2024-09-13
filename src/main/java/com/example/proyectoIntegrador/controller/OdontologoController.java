@@ -34,8 +34,10 @@ import java.util.Optional;
         }
 
         @GetMapping("/buscar/id/{id}")
-        public ResponseEntity<Optional<Odontologo>> buscarPorId(@PathVariable Long id) {
-            return ResponseEntity.ok(odontologoService.buscarPorID(id));
+        public ResponseEntity<Odontologo> buscarPorId(@PathVariable Long id) {
+            Optional<Odontologo> odontologo = odontologoService.buscarPorID(id);
+            return odontologo.map(ResponseEntity::ok)
+                    .orElseGet(() -> ResponseEntity.notFound().build());
         }
 
         @GetMapping("/buscar/nombre/{nombre}")
