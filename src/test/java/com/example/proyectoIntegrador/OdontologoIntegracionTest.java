@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false) // No necesito login en esta clase
-public class OdontologoServiceTestIntegracion {
+public class OdontologoIntegracionTest {
 
     @Autowired
     private OdontologoService odontologoService;
