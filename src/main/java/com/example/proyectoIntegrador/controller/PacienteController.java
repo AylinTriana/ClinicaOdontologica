@@ -5,7 +5,6 @@ import com.example.proyectoIntegrador.exception.BadRequestException;
 import com.example.proyectoIntegrador.exception.ResourceNotFoundException;
 import com.example.proyectoIntegrador.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +43,7 @@ public class PacienteController {
 
       throw new ResourceNotFoundException("Paciente no encontrado");
   }
+
   @GetMapping("buscar/nombre/{nombre}")
   public ResponseEntity<Optional<Paciente>> buscarPacienteNombre(@PathVariable String nombre) throws ResourceNotFoundException {
       Optional<Paciente> pacienteBuscado = pacienteService.buscarPacientePorNombre(nombre);
@@ -53,12 +53,13 @@ public class PacienteController {
           throw new ResourceNotFoundException("Paciente no encontrado");
       }
   }
+
     @DeleteMapping("/eliminar/{id}")
-  public ResponseEntity<String> eliminarPacienteID(@PathVariable("id") Long id) throws BadRequestException {
+    public ResponseEntity<String> eliminarPacienteID(@PathVariable("id") Long id) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
         if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPacienteID(id);
-            return ResponseEntity.status(200).body("paciente eliminado con exito");
+            return ResponseEntity.status(204).body("paciente eliminado con exito");
         }else{
             throw new BadRequestException("Paciente no encontrado");
         }

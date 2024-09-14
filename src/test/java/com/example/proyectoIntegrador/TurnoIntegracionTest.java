@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -113,6 +114,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                         .delete("/turno/eliminar/{id}", id)
                         .contentType(MediaType.APPLICATION_JSON))
                         .andExpect(status().isOk());
+
+        MvcResult resultado = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/turno/buscar/id/" + id)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        assertEquals(404, resultado.getResponse().getStatus());
     }
 
 

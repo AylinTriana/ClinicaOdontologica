@@ -65,6 +65,7 @@ public class OdontologoIntegracionTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.matricula").value("M3000"));
     }
 
+    @Test
     public void buscarOdontologoPorId() throws Exception {
         cargarOdontologos();  // Cargar los odontólogos en la base de datos
 
@@ -95,7 +96,7 @@ public class OdontologoIntegracionTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(odontologoJson))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.content().string("Odontologo actualizado"));
+                .andExpect(MockMvcResultMatchers.content().string("odontologo actualizado con exito"));
 
         MvcResult resultado = mockMvc.perform(MockMvcRequestBuilders
                         .get("/odontologos/buscar/id/" + id)
